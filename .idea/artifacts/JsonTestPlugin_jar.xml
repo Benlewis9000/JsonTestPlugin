@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JsonTestPlugin:jar">
+    <output-path>$PROJECT_DIR$/../Dev_1.13.2/devserver/plugins</output-path>
+    <root id="archive" name="JsonTestPlugin.jar">
+      <element id="module-output" name="JsonTestPlugin" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../Misc/BuildTools/spigot-1.13.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

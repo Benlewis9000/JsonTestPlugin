@@ -1,0 +1,11 @@
+name: jsontestplugin
+version: 0.1.0
+author: AnarchistDev
+main: github.benlewis9000.jsontestplugin.Main
+commands:
+    newmessage:
+        description: Create a new message
+        usage: /newmessage <message>
+    sendmessages:
+        description: Send all messages
+        usage: /sendmessages
