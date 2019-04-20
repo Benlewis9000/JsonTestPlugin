@@ -1,5 +1,6 @@
 package github.benlewis9000.jsontestplugin;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -7,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.yaml.snakeyaml.error.YAMLException;
 
 import java.io.File;
+import java.util.UUID;
 
 public class Main extends JavaPlugin {
 
@@ -35,17 +37,24 @@ public class Main extends JavaPlugin {
 
         messagesConfig = loadMessagesConfig();
 
-        messageManager = new MessageManager();
+        getLogger().info("-- NEW Main (JavaPlugin) instance --");
 
     }
 
     @Override
     public void onEnable(){
 
+        getLogger().info("n-- NEW MessageManager --");
+        messageManager = new MessageManager();
+
         CommandHandler commandHandler = new CommandHandler();
 
         this.getCommand("newmessage").setExecutor(commandHandler);
         this.getCommand("sendmessages").setExecutor(commandHandler);
+
+        Bukkit.getPlayer("121c13e1-4bc7-452c-b0c9-04053e7d5128").sendMessage("onEnable message to Anarchist String uuid");
+
+        Bukkit.getPlayer(UUID.fromString("121c13e1-4bc7-452c-b0c9-04053e7d5128")).sendMessage("onEnable to Anarchist UUID uuid");
 
     }
 
@@ -83,7 +92,8 @@ public class Main extends JavaPlugin {
         }
         catch (Exception e){ // Catch IO/FNF/InvalidConfig exceptions
 
-            System.out.println("ERROR: Failed to load Message's from \"messages.yml\"!");
+            getLogger().severe("ERROR: Failed to load Message's from \"messages.yml\"!");
+            getLogger().severe("JsonTestPlugin is now disabling itself...");
             e.printStackTrace();
 
             // Disable plugin as unsafe to continue
